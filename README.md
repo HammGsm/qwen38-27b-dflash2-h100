@@ -20,13 +20,13 @@ Apache-2.0 · community benchmark report · no affiliation with vLLM, Qwen, Mini
 | Interconnect | **PCIe only, no NVLink** — `nvidia-smi topo -m` reports `SYS` between the GPUs (crosses the SMP interconnect) |
 | PCIe link | Gen **5** x16 max (Gen 5 x16 current) |
 | CPU | **2x AMD EPYC 9654 96-Core** (192 cores, 1 thread/core) |
-| RAM | **755 GB** total (732 GB free) |
+| RAM | **755 GB** total (732 GB free) — only *reserve 64 GB* for vLLM; it actually peaks at **3.3 GB RSS** (measured: `VmHWM 3,325,436 kB`) |
 | Driver / CUDA | **580.178.04 / CUDA 13.0** |
 | Python | **3.11.16** (conda env) |
 | vLLM | **0.28.0** |
 | PyTorch | **2.13.0+cu130** |
 | transformers | **5.16.1** |
-| Scheduler | Slurm (`--gres=gpu:1`, one long-running job) — irrelevant to the results |
+| Scheduler | Slurm: the job *reserves* `gpu:1 + 32 CPUs + 64 GB`, but `nproc` inside the allocation reports **32** vs 192 on the host — reserve what the scheduler wants, measure what you actually use |
 
 ## 2. Models
 
