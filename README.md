@@ -1,6 +1,6 @@
 ﻿# Qwen3.8-27B + DFlash2 drafter on H100: +82% decode, and the vLLM fix quantized drafters need
 
-**+82% decode on one H100 PCIe: Qwen3.8-27B + a 1.19 GB DFlash2 block drafter — and the 39-line patch vLLM 0.28/0.29 still needs.**
+A 1.19 GB drafter, a 39-line patch, and an A/B table of what did **not** help.
 
 Apache-2.0 · community benchmark report · no affiliation with vLLM, Qwen or the model authors.
 
